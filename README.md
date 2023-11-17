@@ -4,7 +4,7 @@
 
 | Day | Languages | Task Link |
 |---|---|---|
-| 1 | [Python (01.12.2022)](./2022/day-1/Python_01.12.2022) <br> [Rust (17.11.2023)](./2022/day-1/Rust) | [Link](https://adventofcode.com/2022/day/1) |
+| 1 | [Python (01.12.2022)](./2022/day-1/Python_01.12.2022) | [Link](https://adventofcode.com/2022/day/1) |
 | 2 | [Python (02.12.2022)](./2022/day-2/Python_02.12.2022) | [Link](https://adventofcode.com/2022/day/2) |
 | 3 | [Python (03.12.2022)](./2022/day-3/Python_03.12.2022) | [Link](https://adventofcode.com/2022/day/3) |
 | 4 | [Python (04.12.2022)](./2022/day-4/Python_04.12.2022) | [Link](https://adventofcode.com/2022/day/4) |
