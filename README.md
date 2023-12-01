@@ -34,7 +34,7 @@
 
 | Day | Languages | Task Link |
 |---|---|---|
-| 1 | [.gitignore (02.12.2023)](./2023/day-1/.gitignore) <br> [.vscode (01.12.2023)](./2023/day-1/.vscode) <br> [Cargo.lock (01.12.2023)](./2023/day-1/Cargo.lock) <br> [Cargo.toml (01.12.2023)](./2023/day-1/Cargo.toml) <br> [src (02.12.2023)](./2023/day-1/src) <br> [target (01.12.2023)](./2023/day-1/target) | [Link](https://adventofcode.com/2023/day/1) |
+| 1 | [Rust (02.12.2023)](./2023/day-1/Rust) | [Link](https://adventofcode.com/2023/day/1) |
 | 2 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/2) |
 | 3 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/3) |
 | 4 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/4) |
