@@ -30,3 +30,33 @@
 | 24 | ❌ Unresolved | [Link](https://adventofcode.com/2022/day/24) |
 | 25 | ❌ Unresolved | [Link](https://adventofcode.com/2022/day/25) |
 
+## Year 2023
+
+| Day | Languages | Task Link |
+|---|---|---|
+| 1 | [.gitignore (02.12.2023)](./2023/day-1/.gitignore) <br> [.vscode (01.12.2023)](./2023/day-1/.vscode) <br> [Cargo.lock (01.12.2023)](./2023/day-1/Cargo.lock) <br> [Cargo.toml (01.12.2023)](./2023/day-1/Cargo.toml) <br> [src (02.12.2023)](./2023/day-1/src) <br> [target (01.12.2023)](./2023/day-1/target) | [Link](https://adventofcode.com/2023/day/1) |
+| 2 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/2) |
+| 3 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/3) |
+| 4 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/4) |
+| 5 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/5) |
+| 6 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/6) |
+| 7 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/7) |
+| 8 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/8) |
+| 9 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/9) |
+| 10 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/10) |
+| 11 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/11) |
+| 12 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/12) |
+| 13 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/13) |
+| 14 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/14) |
+| 15 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/15) |
+| 16 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/16) |
+| 17 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/17) |
+| 18 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/18) |
+| 19 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/19) |
+| 20 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/20) |
+| 21 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/21) |
+| 22 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/22) |
+| 23 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/23) |
+| 24 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/24) |
+| 25 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/25) |
+
