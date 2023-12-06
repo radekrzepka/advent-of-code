@@ -9,7 +9,7 @@ def get_last_modified_date(path):
 def generate_readme(base_path):
     readme_content = "# Advent of Code Solutions\n\n"
 
-    for year in sorted(os.listdir(base_path)):
+    for year in reversed(sorted(os.listdir(base_path))):
         year_path = os.path.join(base_path, year)
         if os.path.isdir(year_path) and year.isdigit():
             readme_content += f"## Year {year}\n\n"
