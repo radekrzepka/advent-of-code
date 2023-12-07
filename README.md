@@ -10,7 +10,7 @@
 | 4 | [Rust (04.12.2023)](./2023/day-4/Rust) | [Link](https://adventofcode.com/2023/day/4) |
 | 5 | [Rust (05.12.2023)](./2023/day-5/Rust) | [Link](https://adventofcode.com/2023/day/5) |
 | 6 | [Rust (06.12.2023)](./2023/day-6/Rust) | [Link](https://adventofcode.com/2023/day/6) |
-| 7 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/7) |
+| 7 | [Rust (07.12.2023)](./2023/day-7/Rust) | [Link](https://adventofcode.com/2023/day/7) |
 | 8 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/8) |
 | 9 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/9) |
 | 10 | ❌ Unresolved | [Link](https://adventofcode.com/2023/day/10) |
