@@ -82,7 +82,7 @@ impl Field {
 }
 
 pub fn main() -> io::Result<()> {
-    let file = fs::read_to_string("./src/inputs/input.txt").unwrap();
+    let file = fs::read_to_string("./src/inputs/mikolaj.txt").unwrap();
     let lines = file.split("\r\n");
     let mut map: Vec<Vec<Field>> = Vec::new();
 
