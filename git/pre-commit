@@ -1,8 +1,0 @@
-#!/bin/sh
-
-cd 'C:\Users\radek\Documents\GitHub\advent-of-code' 
-python main.py 
-echo Generated README.md 
-cd . 
-git add README.md 
-exit 0

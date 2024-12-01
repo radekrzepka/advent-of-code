@@ -4,15 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
-	"slices"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	fmt.Println(SolvePart1("./part-1-input.txt"))
+	fmt.Println(SolvePart2("./part-2-input.txt"))
 }
 
 func ReadFile(filePath string) ([]string, error) {
@@ -54,25 +52,44 @@ func GetArrays(lines []string) ([]int, []int) {
 	}
 
 	return firstList, secondList
-
 }
 
-func SolvePart1(inputPath string) int {
-	distance := 0
+func CountOccurrences(numbers []int) map[int]int {
+	counts := make(map[int]int)
+	for _, number := range numbers {
+		counts[number]++
+	}
+	return counts
+}
 
+func CountSimilarityScore(first []int, second []int) int {
+	similarityScore := 0
+
+	firstMap := CountOccurrences(first)
+	secondMap := CountOccurrences(second)
+
+	fmt.Println(firstMap, secondMap)
+
+	for key, value := range firstMap {
+		if secondMap[key] == 0 {
+			continue
+		}
+
+		scoreToAdd := key * secondMap[key] * value
+		similarityScore += int(scoreToAdd)
+	}
+
+	return similarityScore
+}
+
+func SolvePart2(inputPath string) int {
 	lines, err := ReadFile(inputPath)
 	if err != nil {
 		log.Fatalf("Error reading file: %s", err)
 	}
 
 	first, second := GetArrays(lines)
-	slices.Sort(first)
-	slices.Sort(second)
+	similarityScore := CountSimilarityScore(first, second)
 
-	for i := range first {
-		diff := first[i] - second[i]
-		distance += int(math.Abs(float64(diff)))
-	}
-
-	return distance
+	return similarityScore
 }

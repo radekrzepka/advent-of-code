@@ -2,9 +2,11 @@ import os
 import re
 from datetime import datetime
 
+
 def get_last_modified_date(path):
     timestamp = os.path.getmtime(path)
     return datetime.fromtimestamp(timestamp).strftime('%d.%m.%Y')
+
 
 def generate_readme(base_path):
     readme_content = "# Advent of Code Solutions\n\n"
@@ -42,5 +44,6 @@ def generate_readme(base_path):
     with open(os.path.join(base_path, 'README.md'), 'w', encoding='utf-8') as file:
         file.write(readme_content)
 
-base_path = 'C:/Users/radek/Documents/GitHub/advent-of-code' 
+
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 generate_readme(base_path)
