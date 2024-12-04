@@ -1,11 +1,4 @@
 import os
-import re
-from datetime import datetime
-
-
-def get_last_modified_date(path):
-    timestamp = os.path.getmtime(path)
-    return datetime.fromtimestamp(timestamp).strftime('%d.%m.%Y')
 
 
 def generate_readme(base_path):
@@ -23,17 +16,7 @@ def generate_readme(base_path):
 
                 if os.path.exists(day_path) and os.path.isdir(day_path):
                     for lang_dir in os.listdir(day_path):
-                        lang_path = os.path.join(day_path, lang_dir)
-                        match = re.match(r'(\w+)_(\d{2}\.\d{2}\.\d{4})', lang_dir)
-                        if match:
-                            lang, date = match.groups()
-                            date_text = f" ({date})" if date else ""
-                        else:
-                            lang = lang_dir
-                            date_text = ""
-
-                        link_text = f"{lang}{date_text if date_text else f' ({get_last_modified_date(lang_path)})'}"
-                        languages.append(f'[{link_text}](./{year}/day-{day}/{lang_dir})')
+                        languages.append(f'[{lang_dir}](./{year}/day-{day}/{lang_dir})')
 
                 languages_column = ' <br> '.join(languages) if languages else "❌ Unresolved"
                 task_link = f"[Link](https://adventofcode.com/{year}/day/{day})"
