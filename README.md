@@ -6,8 +6,8 @@
 |---|---|---|
 | 1 | [Go](./2024/day-1/Go) | [Link](https://adventofcode.com/2024/day/1) |
 | 2 | [Go](./2024/day-2/Go) | [Link](https://adventofcode.com/2024/day/2) |
-| 3 | ❌ Unresolved | [Link](https://adventofcode.com/2024/day/3) |
-| 4 | ❌ Unresolved | [Link](https://adventofcode.com/2024/day/4) |
+| 3 | [Go](./2024/day-3/Go) | [Link](https://adventofcode.com/2024/day/3) |
+| 4 | [Go](./2024/day-4/Go) | [Link](https://adventofcode.com/2024/day/4) |
 | 5 | ❌ Unresolved | [Link](https://adventofcode.com/2024/day/5) |
 | 6 | ❌ Unresolved | [Link](https://adventofcode.com/2024/day/6) |
 | 7 | ❌ Unresolved | [Link](https://adventofcode.com/2024/day/7) |
