@@ -4,13 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"slices"
 	"strings"
 )
 
 type Direction string
-
-type Board [][]string
 
 const (
 	North Direction = "N"
@@ -24,14 +21,13 @@ type Cords struct {
 	y int
 }
 
-func (c *Cords) areCordsInBoard(board Board) bool {
+func (c *Cords) areCordsInBoard(board [][]string) bool {
 	rowSize := len(board[0])
 	colSize := len(board)
 
-	if c.x < 0 || c.x >= rowSize || c.y < 0 || c.y >= colSize {
+	if c.x < 0 || c.x >= colSize || c.y < 0 || c.y >= rowSize {
 		return false
 	}
-
 	return true
 }
 
@@ -40,49 +36,45 @@ type Guard struct {
 	direction Direction
 }
 
-func (g *Guard) initPosition(board Board) {
-	for i := range board {
-		for j := range board[i] {
+func readBoard(boardPath string) [][]string {
+	file, _ := os.Open(boardPath)
+	defer file.Close()
+
+	var board [][]string
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		chars := strings.Split(line, "")
+		board = append(board, chars)
+	}
+
+	return board
+}
+
+func findGuard(board [][]string) (Cords, Direction) {
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board[i]); j++ {
 			if board[i][j] == "^" {
-				g.cords.x = i
-				g.cords.y = j
-				return
+				return Cords{i, j}, North
 			}
 		}
 	}
-}
-
-func (g *Guard) isGuardInBoard(board Board) bool {
-	return g.cords.areCordsInBoard(board)
+	panic("No guard found")
 }
 
 func (g *Guard) nextMove() Cords {
-	var nextMoveCords Cords
-
 	switch g.direction {
 	case North:
-		nextMoveCords = Cords{
-			x: g.cords.x - 1,
-			y: g.cords.y,
-		}
+		return Cords{x: g.cords.x - 1, y: g.cords.y}
 	case East:
-		nextMoveCords = Cords{
-			x: g.cords.x,
-			y: g.cords.y + 1,
-		}
+		return Cords{x: g.cords.x, y: g.cords.y + 1}
 	case South:
-		nextMoveCords = Cords{
-			x: g.cords.x + 1,
-			y: g.cords.y,
-		}
+		return Cords{x: g.cords.x + 1, y: g.cords.y}
 	case West:
-		nextMoveCords = Cords{
-			x: g.cords.x,
-			y: g.cords.y - 1,
-		}
+		return Cords{x: g.cords.x, y: g.cords.y - 1}
 	}
-
-	return nextMoveCords
+	panic("Invalid direction")
 }
 
 func (g *Guard) changeDirection() {
@@ -98,67 +90,78 @@ func (g *Guard) changeDirection() {
 	}
 }
 
-func getFieldChar(cords Cords, board Board) string {
+func getFieldChar(cords Cords, board [][]string) string {
 	if !cords.areCordsInBoard(board) {
-		return "."
+		return ""
 	}
 	return board[cords.x][cords.y]
 }
 
-func (g *Guard) move(board Board, moves *int, movesHistory *[]Cords) {
-	nextGuardMove := g.nextMove()
-	nextMoveField := getFieldChar(nextGuardMove, board)
+func simulate(board [][]string, startGuard Guard) (leavesBoard bool, loops bool) {
+	guard := startGuard
 
-	if nextMoveField == "#" {
-		g.changeDirection()
-		// fmt.Println("Changed direction", g.cords.x, g.cords.y, getFieldChar(nextGuardMove, board))
-		return
+	visitedStates := make(map[string]bool)
+	initialState := fmt.Sprintf("%d,%d,%s", guard.cords.x, guard.cords.y, guard.direction)
+	visitedStates[initialState] = true
+
+	for {
+		if !guard.cords.areCordsInBoard(board) {
+			return true, false
+		}
+
+		next := guard.nextMove()
+		nextChar := getFieldChar(next, board)
+
+		if nextChar == "#" {
+			guard.changeDirection()
+		} else {
+			guard.cords = next
+		}
+
+		stateKey := fmt.Sprintf("%d,%d,%s", guard.cords.x, guard.cords.y, guard.direction)
+		if visitedStates[stateKey] {
+			return false, true
+		}
+		visitedStates[stateKey] = true
 	}
-
-	g.cords = nextGuardMove
-	if slices.Contains(*movesHistory, nextGuardMove) {
-		return
-	}
-	*movesHistory = append(*movesHistory, nextGuardMove)
-	*moves++
-
-	// fmt.Println(nextGuardMove, getFieldChar(nextGuardMove, board))
 }
 
-func readBoard(boardPath string) Board {
-	file, _ := os.Open(boardPath)
-	defer file.Close()
-
-	var board Board
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
-		chars := strings.Split(line, "")
-		board = append(board, chars)
+func copyBoard(original [][]string) [][]string {
+	newBoard := make([][]string, len(original))
+	for i := range original {
+		newBoard[i] = make([]string, len(original[i]))
+		copy(newBoard[i], original[i])
 	}
-
-	return board
+	return newBoard
 }
 
 func main() {
 	board := readBoard("./input.txt")
+	guardStart, dir := findGuard(board)
 
-	guard := Guard{
-		cords: Cords{
-			x: 0,
-			y: 0,
-		},
-		direction: North,
-	}
-	guard.initPosition(board)
-
-	moves := 0
-	var movesHistory []Cords
-
-	for guard.isGuardInBoard(board) {
-		guard.move(board, &moves, &movesHistory)
+	startGuard := Guard{
+		cords:     guardStart,
+		direction: dir,
 	}
 
-	fmt.Println(moves - 1)
+	possiblePositions := 0
+
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board[i]); j++ {
+			if i == guardStart.x && j == guardStart.y {
+				continue
+			}
+			if board[i][j] == "." {
+				newBoard := copyBoard(board)
+				newBoard[i][j] = "#"
+
+				leaves, loops := simulate(newBoard, startGuard)
+				if loops && !leaves {
+					possiblePositions++
+				}
+			}
+		}
+	}
+
+	fmt.Println(possiblePositions)
 }
